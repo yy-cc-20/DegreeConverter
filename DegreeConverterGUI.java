@@ -1,9 +1,10 @@
+package DegreeConverter;
+
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.*;
 import java.text.NumberFormat;
 import java.util.Locale;
-
-import javax.swing.*;
 
 // Get input and display output
 public class DegreeConverterGUI extends JPanel {
@@ -47,13 +48,12 @@ public class DegreeConverterGUI extends JPanel {
 	// create different panel for decimal degree and dms
 	private JPanel createDecimalPanel() {
 		JPanel decimalPanel = new JPanel();
-		JLabel decimalDegreesLabel = new JLabel("Decimal Degree");
 		
 		decimalDegreeField = new JFormattedTextField(numberFieldFormatter);
 		decimalDegreeField.setColumns(10);
 		decimalDegreeField.addActionListener(new DecimalToDMSListener());
 		
-		decimalPanel.add(decimalDegreesLabel);
+		decimalPanel.add(new JLabel("Decimal Degree"));
 		decimalPanel.add(decimalDegreeField);
 		
 		decimalPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Decimal"));
@@ -73,16 +73,13 @@ public class DegreeConverterGUI extends JPanel {
 			
 			// output
 			degreesField.setText(degrees.getDMS().degrees + ""); // + "" to parse to String
-			minutesField.setText(degrees.getDMS().minutes + "");
+			minutesField.setText(degrees.getDMS().minutes + ""); // String.valueOf() as alternative
 			secondsField.setText(degrees.getDMS().seconds + "");
 		}
 	}
 	
 	private JPanel createDMSPanel() {
 		JPanel dmsPanel = new JPanel(new GridLayout(3, 2, -40, 25));
-		JLabel degreesLabel = new JLabel("Degrees");
-		JLabel minutesLabel = new JLabel("Minutes");
-		JLabel secondsLabel = new JLabel("Seconds");
 		
 		DMSToDecimalListener dmsToDecimalListener = new DMSToDecimalListener();
 		
@@ -98,11 +95,11 @@ public class DegreeConverterGUI extends JPanel {
 		secondsField.setColumns(10);
 		secondsField.addActionListener(dmsToDecimalListener);
 		
-		dmsPanel.add(degreesLabel);
+		dmsPanel.add(new JLabel("Degrees"));
 		dmsPanel.add(degreesField);
-		dmsPanel.add(minutesLabel);
+		dmsPanel.add(new JLabel("Minutes"));
 		dmsPanel.add(minutesField);
-		dmsPanel.add(secondsLabel);
+		dmsPanel.add(new JLabel("Seconds"));
 		dmsPanel.add(secondsField);
 		
 		dmsPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "DMS"));

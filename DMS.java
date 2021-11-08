@@ -1,3 +1,5 @@
+package DegreeConverter;
+
 // Represents degrees in degrees, minutes, seconds
 public class DMS {
 	public double degrees;

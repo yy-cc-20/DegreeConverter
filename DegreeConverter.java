@@ -1,3 +1,5 @@
+package DegreeConverter;
+
 import javax.swing.JFrame;
 
 // Build user interface and run the program

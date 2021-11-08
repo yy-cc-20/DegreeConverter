@@ -1,3 +1,5 @@
+package DegreeConverter;
+
 // Represent degrees in either decimal format or DMS format
 public class Degrees {
 	private double decimalDegrees; // degrees in decimal
